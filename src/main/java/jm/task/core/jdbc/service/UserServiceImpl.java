@@ -1,21 +1,20 @@
 package jm.task.core.jdbc.service;
 
-import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+import jm.task.core.jdbc.dao.*;
 import jm.task.core.jdbc.model.User;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.util.List;
 
-public class UserServiceImpl implements UserService, Closeable {
-	private UserDaoJDBCImpl userDao;
+public class UserServiceImpl implements UserService {
+	private UserDao userDao;
 
 	public void createUsersTable() {
 		userDao.createUsersTable();
 	}
 
 	public UserServiceImpl() {
-		userDao = new UserDaoJDBCImpl();
+		userDao = new UserDaoHibernateImpl();
 	}
 
 	public void dropUsersTable() {
@@ -38,7 +37,6 @@ public class UserServiceImpl implements UserService, Closeable {
 		userDao.cleanUsersTable();
 	}
 
-	@Override
 	public void close() throws IOException {
 		userDao.close();
 	}

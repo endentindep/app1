@@ -2,9 +2,10 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 
+import java.io.Closeable;
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao extends Closeable {
 	void createUsersTable();
 
 	void dropUsersTable();
@@ -16,5 +17,4 @@ public interface UserDao {
 	List<User> getAllUsers();
 
 	void cleanUsersTable();
-
 }

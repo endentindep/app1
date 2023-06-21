@@ -3,11 +3,12 @@ package jm.task.core.jdbc;
 import java.util.List;
 
 import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
 	public static void main(String[] args) {
-		try (UserServiceImpl userService = new UserServiceImpl()) {
+		try (UserService userService = new UserServiceImpl()) {
 			userService.createUsersTable();
 			userService.saveUser("Павел1", "Павел2", (byte) 25);
 			userService.saveUser("Антон1", "Антон2", (byte) 35);
